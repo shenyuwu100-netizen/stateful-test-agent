@@ -1,0 +1,992 @@
+{
+  "started": "20260906-012933",
+  "command_budget": 120,
+  "fixture_hashes_before_generation": {
+    "heldout_target.py": "33ebfb12f379f3d63e754907a49f40d80c37abee469bcb49ce7a2a5f1fb2792c",
+    "local_target.py": "488c3454b0ed64452ca0f9405bdaf621d849bc9e866af878cce34fbaa927ac91"
+  },
+  "api_attempts": [
+    {
+      "attempt": 1,
+      "max_completion_tokens": 3000,
+      "prompt_sha256": "656663255f04e917bcd87f53fa797d1b92046dcb1b61ffbbc880a3bdaa583a7c",
+      "seconds": 9.78,
+      "usage": {
+        "completion_tokens": 991,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 369,
+          "rejected_prediction_tokens": 0
+        },
+        "latency_checkpoint": {
+          "engine_tbt_ms": 7,
+          "engine_ttft_ms": 97,
+          "engine_ttlt_ms": 7182,
+          "pre_inference_ms": 87,
+          "service_tbt_ms": 7,
+          "service_ttft_ms": 933,
+          "service_ttlt_ms": 8013,
+          "user_visible_ttft_ms": 846
+        },
+        "prompt_tokens": 596,
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "total_tokens": 1587
+      },
+      "model": "gpt-5.6-luna-2026-07-09",
+      "finish_reason": "stop",
+      "status": "ok"
+    },
+    {
+      "attempt": 2,
+      "max_completion_tokens": 3000,
+      "prompt_sha256": "abe5b5d7f6997a9a4b623222414818750794f8aecefaa18e4c89183b3e8d5bf5",
+      "seconds": 11.95,
+      "usage": {
+        "completion_tokens": 1386,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 911,
+          "rejected_prediction_tokens": 0
+        },
+        "latency_checkpoint": {
+          "engine_tbt_ms": 7,
+          "engine_ttft_ms": 85,
+          "engine_ttlt_ms": 10000,
+          "pre_inference_ms": 83,
+          "service_tbt_ms": 7,
+          "service_ttft_ms": 819,
+          "service_ttlt_ms": 10730,
+          "user_visible_ttft_ms": 736
+        },
+        "prompt_tokens": 596,
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "total_tokens": 1982
+      },
+      "model": "gpt-5.6-luna-2026-07-09",
+      "finish_reason": "stop",
+      "status": "ok"
+    },
+    {
+      "attempt": 3,
+      "max_completion_tokens": 3000,
+      "prompt_sha256": "8fced1d8cf815bd23a6bb113e56a6ea5985b5cacbb8faa35c11487edd874d0eb",
+      "seconds": 3.38,
+      "usage": {
+        "completion_tokens": 114,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 85,
+          "rejected_prediction_tokens": 0
+        },
+        "latency_checkpoint": {
+          "engine_tbt_ms": 8,
+          "engine_ttft_ms": 59,
+          "engine_ttlt_ms": 919,
+          "pre_inference_ms": 115,
+          "service_tbt_ms": 7,
+          "service_ttft_ms": 971,
+          "service_ttlt_ms": 1799,
+          "user_visible_ttft_ms": 856
+        },
+        "prompt_tokens": 1307,
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cache_write_tokens": 1304,
+          "cached_tokens": 0
+        },
+        "total_tokens": 1421
+      },
+      "model": "gpt-5.6-luna-2026-07-09",
+      "finish_reason": "stop",
+      "status": "ok"
+    }
+  ],
+  "suites": {
+    "single": {
+      "sequences": [
+        [
+          "SET a 10",
+          "GET a",
+          "INCR a",
+          "INCRBY a 5",
+          "DECRBY a 3",
+          "GET a",
+          "STRLEN a",
+          "GETRANGE a 1 -1",
+          "DEL a",
+          "GET a"
+        ],
+        [
+          "GET missing",
+          "INCR missing",
+          "DECRBY missing 4",
+          "APPEND missing 7",
+          "STRLEN missing",
+          "GETRANGE missing 0 -1",
+          "EXISTS missing",
+          "DEL missing",
+          "EXISTS missing"
+        ],
+        [
+          "MSET a one b two c 3",
+          "MGET c a b a",
+          "SET b overwritten",
+          "GET b",
+          "EXISTS a b c b",
+          "DEL b c b",
+          "MGET a b c",
+          "SET empty \"\"",
+          "STRLEN empty",
+          "GETRANGE empty 0 -1"
+        ],
+        [
+          "LPUSH list a b c",
+          "RPUSH list d e",
+          "LLEN list",
+          "LRANGE list 0 -1",
+          "LPOP list",
+          "RPOP list",
+          "LINDEX list -1",
+          "LSET list 1 changed",
+          "LREM list 0 changed",
+          "LREV list",
+          "LRANGE list 0 -1"
+        ],
+        [
+          "LSET absent 0 x",
+          "LPOP absent",
+          "RPUSH emptylist one",
+          "LREM emptylist 1 one",
+          "LLEN emptylist",
+          "EXISTS emptylist",
+          "LRANGE emptylist 0 -1",
+          "DEL emptylist",
+          "EXISTS emptylist",
+          "RPOP emptylist"
+        ],
+        [
+          "DEFINE age TYPE integer RANGE 0 120",
+          "SETV age 42",
+          "VALIDATE age",
+          "INCRBY age 8",
+          "SETV age -1",
+          "GET age",
+          "DEFINE color TYPE enum VALUES red,green,blue",
+          "SETV color red",
+          "SETV color yellow",
+          "VALIDATE color"
+        ],
+        [
+          "DEFINE email TYPE string PATTERN \"^[a-z]+@[a-z]+$\"",
+          "SETV email alice@example",
+          "GET email",
+          "APPEND email .org",
+          "SETV email Invalid",
+          "VALIDATE email",
+          "CALC total 2 + 3 * 4",
+          "GET total",
+          "DEFINE total TYPE integer RANGE 0 20",
+          "CALC total total + 10",
+          "GET total"
+        ]
+      ],
+      "relations": [
+        {
+          "a": [
+            "SET x 1",
+            "GET x"
+          ],
+          "b": [
+            "MSET x 1",
+            "GET x"
+          ],
+          "relation": "EQ"
+        },
+        {
+          "a": [
+            "LPUSH l 1 2",
+            "LRANGE l 0 -1"
+          ],
+          "b": [
+            "RPUSH l 2 1",
+            "LRANGE l 0 -1"
+          ],
+          "relation": "EQ"
+        },
+        {
+          "a": [
+            "SET n 7",
+            "INCRBY n 5",
+            "GET n"
+          ],
+          "b": [
+            "SET n 12",
+            "GET n"
+          ],
+          "relation": "EQ"
+        },
+        {
+          "a": [
+            "DEL absent"
+          ],
+          "b": [
+            "GET absent"
+          ],
+          "relation": "NE"
+        },
+        {
+          "a": [
+            "SET s abc",
+            "APPEND s def",
+            "STRLEN s"
+          ],
+          "b": [
+            "SET s abcdef",
+            "STRLEN s"
+          ],
+          "relation": "EQ"
+        },
+        {
+          "a": [
+            "SET l a",
+            "DEL l",
+            "EXISTS l"
+          ],
+          "b": [
+            "SET l a",
+            "DEL l",
+            "LLEN l"
+          ],
+          "relation": "NE"
+        }
+      ],
+      "commands": 97
+    },
+    "agent_round1": {
+      "sequences": [
+        [
+          "SET n 5",
+          "INCRBY n -2",
+          "APPEND n x",
+          "GET n",
+          "STRLEN n",
+          "GETRANGE n 0 1",
+          "DEL n",
+          "GET n"
+        ],
+        [
+          "LPUSH q a b c",
+          "RPUSH q d e",
+          "LRANGE q 0 -1",
+          "LREM q 2 b",
+          "LREV q",
+          "LINDEX q -1",
+          "LPOP q",
+          "LLEN q"
+        ],
+        [
+          "DEFINE age TYPE integer RANGE 0 10",
+          "SETV age 7 TYPE integer RANGE 0 10",
+          "GET age",
+          "SETV age 11 TYPE integer RANGE 0 10",
+          "GET age",
+          "DEFINE email TYPE string PATTERN \"^[a-z]+@[a-z]+$\"",
+          "SETV email alice@example TYPE string PATTERN \"^[a-z]+@[a-z]+$\"",
+          "VALIDATE email",
+          "CALC age (+ $age 2)",
+          "GET age"
+        ],
+        [
+          "MSET a 12 b hello c 34",
+          "MGET c a b a",
+          "EXISTS a a z",
+          "GETRANGE b 1 -2",
+          "EVAL (if (> $a 10) (+ $a 3) 0)",
+          "CALC c (* $c 2)",
+          "GET c",
+          "APPEND b !",
+          "STRLEN b"
+        ]
+      ],
+      "relations": [
+        {
+          "a": [
+            "SET x hello",
+            "APPEND x world",
+            "GET x"
+          ],
+          "b": [
+            "SET x helloworld",
+            "GET x"
+          ],
+          "relation": "EQ"
+        },
+        {
+          "a": [
+            "LPUSH l a b",
+            "LRANGE l 0 -1"
+          ],
+          "b": [
+            "RPUSH l b a",
+            "LRANGE l 0 -1"
+          ],
+          "relation": "EQ"
+        },
+        {
+          "a": [
+            "SET a 1",
+            "INCR a",
+            "GET a"
+          ],
+          "b": [
+            "SET a 1",
+            "GET a"
+          ],
+          "relation": "NE"
+        },
+        {
+          "a": [
+            "DEFINE x TYPE integer RANGE 0 9",
+            "SETV x 4 TYPE integer RANGE 0 9",
+            "GET x"
+          ],
+          "b": [
+            "SET x 4",
+            "GET x"
+          ],
+          "relation": "EQ"
+        },
+        {
+          "a": [
+            "RPUSH l a a a b",
+            "LREM l 0 a",
+            "LRANGE l 0 -1"
+          ],
+          "b": [
+            "RPUSH l b",
+            "LRANGE l 0 -1"
+          ],
+          "relation": "EQ"
+        }
+      ],
+      "commands": 59
+    },
+    "agent": {
+      "sequences": [
+        [
+          "SET n 5",
+          "INCRBY n -2",
+          "APPEND n x",
+          "GET n",
+          "STRLEN n",
+          "GETRANGE n 0 1",
+          "DEL n",
+          "GET n"
+        ],
+        [
+          "LPUSH q a b c",
+          "RPUSH q d e",
+          "LRANGE q 0 -1",
+          "LREM q 2 b",
+          "LREV q",
+          "LINDEX q -1",
+          "LPOP q",
+          "LLEN q"
+        ],
+        [
+          "DEFINE age TYPE integer RANGE 0 10",
+          "SETV age 7 TYPE integer RANGE 0 10",
+          "GET age",
+          "SETV age 11 TYPE integer RANGE 0 10",
+          "GET age",
+          "DEFINE email TYPE string PATTERN \"^[a-z]+@[a-z]+$\"",
+          "SETV email alice@example TYPE string PATTERN \"^[a-z]+@[a-z]+$\"",
+          "VALIDATE email",
+          "CALC age (+ $age 2)",
+          "GET age"
+        ],
+        [
+          "MSET a 12 b hello c 34",
+          "MGET c a b a",
+          "EXISTS a a z",
+          "GETRANGE b 1 -2",
+          "EVAL (if (> $a 10) (+ $a 3) 0)",
+          "CALC c (* $c 2)",
+          "GET c",
+          "APPEND b !",
+          "STRLEN b"
+        ],
+        [
+          "DECRBY missing -3",
+          "GET missing"
+        ]
+      ],
+      "relations": [
+        {
+          "a": [
+            "SET x hello",
+            "APPEND x world",
+            "GET x"
+          ],
+          "b": [
+            "SET x helloworld",
+            "GET x"
+          ],
+          "relation": "EQ"
+        },
+        {
+          "a": [
+            "LPUSH l a b",
+            "LRANGE l 0 -1"
+          ],
+          "b": [
+            "RPUSH l b a",
+            "LRANGE l 0 -1"
+          ],
+          "relation": "EQ"
+        },
+        {
+          "a": [
+            "SET a 1",
+            "INCR a",
+            "GET a"
+          ],
+          "b": [
+            "SET a 1",
+            "GET a"
+          ],
+          "relation": "NE"
+        },
+        {
+          "a": [
+            "DEFINE x TYPE integer RANGE 0 9",
+            "SETV x 4 TYPE integer RANGE 0 9",
+            "GET x"
+          ],
+          "b": [
+            "SET x 4",
+            "GET x"
+          ],
+          "relation": "EQ"
+        },
+        {
+          "a": [
+            "RPUSH l a a a b",
+            "LREM l 0 a",
+            "LRANGE l 0 -1"
+          ],
+          "b": [
+            "RPUSH l b",
+            "LRANGE l 0 -1"
+          ],
+          "relation": "EQ"
+        }
+      ],
+      "commands": 61
+    }
+  },
+  "evaluation": {
+    "single": {
+      "commands": 97,
+      "development": {
+        "killed": {
+          "lrev_noop": {
+            "kind": "sequence",
+            "index": 3
+          },
+          "lset_noop": {
+            "kind": "sequence",
+            "index": 3
+          },
+          "getrange_exclusive": {
+            "kind": "sequence",
+            "index": 0
+          },
+          "lpush_preserve_order": {
+            "kind": "sequence",
+            "index": 3
+          }
+        },
+        "detected": 4,
+        "total": 12,
+        "valid_relations": 5,
+        "invalid_relation_indices": [
+          5
+        ]
+      },
+      "heldout": {
+        "killed": {
+          "decrby_sign": {
+            "kind": "sequence",
+            "index": 0
+          },
+          "mget_reorders": {
+            "kind": "sequence",
+            "index": 2
+          },
+          "lindex_negative_offone": {
+            "kind": "sequence",
+            "index": 3
+          },
+          "rpop_wrong_end": {
+            "kind": "sequence",
+            "index": 3
+          },
+          "exists_deduplicates": {
+            "kind": "sequence",
+            "index": 2
+          },
+          "mset_loses_last": {
+            "kind": "sequence",
+            "index": 2
+          },
+          "append_returns_old_length": {
+            "kind": "sequence",
+            "index": 1
+          }
+        },
+        "detected": 7,
+        "total": 8,
+        "valid_relations": 5,
+        "invalid_relation_indices": [
+          5
+        ]
+      }
+    },
+    "agent_round1": {
+      "commands": 59,
+      "development": {
+        "killed": {
+          "setv_partial_commit": {
+            "kind": "sequence",
+            "index": 2
+          },
+          "lrev_noop": {
+            "kind": "sequence",
+            "index": 1
+          },
+          "getrange_exclusive": {
+            "kind": "sequence",
+            "index": 0
+          },
+          "lpush_preserve_order": {
+            "kind": "sequence",
+            "index": 1
+          },
+          "calc_no_store": {
+            "kind": "sequence",
+            "index": 2
+          }
+        },
+        "detected": 5,
+        "total": 12,
+        "valid_relations": 5,
+        "invalid_relation_indices": []
+      },
+      "heldout": {
+        "killed": {
+          "mget_reorders": {
+            "kind": "sequence",
+            "index": 3
+          },
+          "lindex_negative_offone": {
+            "kind": "sequence",
+            "index": 1
+          },
+          "exists_deduplicates": {
+            "kind": "sequence",
+            "index": 3
+          },
+          "mset_loses_last": {
+            "kind": "sequence",
+            "index": 3
+          },
+          "append_returns_old_length": {
+            "kind": "sequence",
+            "index": 0
+          }
+        },
+        "detected": 5,
+        "total": 8,
+        "valid_relations": 5,
+        "invalid_relation_indices": []
+      }
+    },
+    "agent": {
+      "commands": 61,
+      "development": {
+        "killed": {
+          "setv_partial_commit": {
+            "kind": "sequence",
+            "index": 2
+          },
+          "lrev_noop": {
+            "kind": "sequence",
+            "index": 1
+          },
+          "getrange_exclusive": {
+            "kind": "sequence",
+            "index": 0
+          },
+          "lpush_preserve_order": {
+            "kind": "sequence",
+            "index": 1
+          },
+          "calc_no_store": {
+            "kind": "sequence",
+            "index": 2
+          }
+        },
+        "detected": 5,
+        "total": 12,
+        "valid_relations": 5,
+        "invalid_relation_indices": []
+      },
+      "heldout": {
+        "killed": {
+          "decrby_sign": {
+            "kind": "sequence",
+            "index": 4
+          },
+          "mget_reorders": {
+            "kind": "sequence",
+            "index": 3
+          },
+          "lindex_negative_offone": {
+            "kind": "sequence",
+            "index": 1
+          },
+          "exists_deduplicates": {
+            "kind": "sequence",
+            "index": 3
+          },
+          "mset_loses_last": {
+            "kind": "sequence",
+            "index": 3
+          },
+          "append_returns_old_length": {
+            "kind": "sequence",
+            "index": 0
+          }
+        },
+        "detected": 6,
+        "total": 8,
+        "valid_relations": 5,
+        "invalid_relation_indices": []
+      }
+    }
+  },
+  "reproducers": {
+    "single": {
+      "decrby_sign": {
+        "kind": "sequence",
+        "commands": [
+          "DECRBY a 3"
+        ],
+        "expected": [
+          "-3"
+        ],
+        "actual": [
+          "3"
+        ],
+        "checks": 15,
+        "one_minimal": true
+      },
+      "mget_reorders": {
+        "kind": "sequence",
+        "commands": [
+          "MSET a one b two c 3",
+          "MGET c a b a"
+        ],
+        "expected": [
+          "OK",
+          "3\none\ntwo\none"
+        ],
+        "actual": [
+          "OK",
+          "one\none\ntwo\n3"
+        ],
+        "checks": 26,
+        "one_minimal": true
+      },
+      "lindex_negative_offone": {
+        "kind": "sequence",
+        "commands": [
+          "LPUSH list a b c",
+          "LINDEX list -1"
+        ],
+        "expected": [
+          "3",
+          "a"
+        ],
+        "actual": [
+          "3",
+          "(nil)"
+        ],
+        "checks": 24,
+        "one_minimal": true
+      },
+      "rpop_wrong_end": {
+        "kind": "sequence",
+        "commands": [
+          "LPUSH list a b c",
+          "RPOP list"
+        ],
+        "expected": [
+          "3",
+          "a"
+        ],
+        "actual": [
+          "3",
+          "c"
+        ],
+        "checks": 25,
+        "one_minimal": true
+      },
+      "exists_deduplicates": {
+        "kind": "sequence",
+        "commands": [
+          "SET b overwritten",
+          "EXISTS a b c b"
+        ],
+        "expected": [
+          "OK",
+          "2"
+        ],
+        "actual": [
+          "OK",
+          "1"
+        ],
+        "checks": 21,
+        "one_minimal": true
+      },
+      "mset_loses_last": {
+        "kind": "sequence",
+        "commands": [
+          "MSET a one b two c 3",
+          "MGET a b c"
+        ],
+        "expected": [
+          "OK",
+          "one\ntwo\n3"
+        ],
+        "actual": [
+          "OK",
+          "one\ntwo\n(nil)"
+        ],
+        "checks": 21,
+        "one_minimal": true
+      },
+      "append_returns_old_length": {
+        "kind": "sequence",
+        "commands": [
+          "APPEND missing 7"
+        ],
+        "expected": [
+          "1"
+        ],
+        "actual": [
+          "0"
+        ],
+        "checks": 14,
+        "one_minimal": true
+      }
+    },
+    "agent_round1": {
+      "mget_reorders": {
+        "kind": "sequence",
+        "commands": [
+          "MSET a 12 b hello c 34",
+          "MGET c a b a"
+        ],
+        "expected": [
+          "OK",
+          "34\n12\nhello\n12"
+        ],
+        "actual": [
+          "OK",
+          "12\n12\nhello\n34"
+        ],
+        "checks": 23,
+        "one_minimal": true
+      },
+      "lindex_negative_offone": {
+        "kind": "sequence",
+        "commands": [
+          "RPUSH q d e",
+          "LINDEX q -1"
+        ],
+        "expected": [
+          "2",
+          "e"
+        ],
+        "actual": [
+          "2",
+          "(nil)"
+        ],
+        "checks": 15,
+        "one_minimal": true
+      },
+      "exists_deduplicates": {
+        "kind": "sequence",
+        "commands": [
+          "MSET a 12 b hello c 34",
+          "EXISTS a a z"
+        ],
+        "expected": [
+          "OK",
+          "2"
+        ],
+        "actual": [
+          "OK",
+          "1"
+        ],
+        "checks": 22,
+        "one_minimal": true
+      },
+      "mset_loses_last": {
+        "kind": "sequence",
+        "commands": [
+          "MSET a 12 b hello c 34",
+          "GET c"
+        ],
+        "expected": [
+          "OK",
+          "34"
+        ],
+        "actual": [
+          "OK",
+          "(nil)"
+        ],
+        "checks": 18,
+        "one_minimal": true
+      },
+      "append_returns_old_length": {
+        "kind": "sequence",
+        "commands": [
+          "APPEND n x"
+        ],
+        "expected": [
+          "1"
+        ],
+        "actual": [
+          "0"
+        ],
+        "checks": 13,
+        "one_minimal": true
+      }
+    },
+    "agent": {
+      "decrby_sign": {
+        "kind": "sequence",
+        "commands": [
+          "DECRBY missing -3"
+        ],
+        "expected": [
+          "3"
+        ],
+        "actual": [
+          "-3"
+        ],
+        "checks": 3,
+        "one_minimal": true
+      },
+      "mget_reorders": {
+        "kind": "sequence",
+        "commands": [
+          "MSET a 12 b hello c 34",
+          "MGET c a b a"
+        ],
+        "expected": [
+          "OK",
+          "34\n12\nhello\n12"
+        ],
+        "actual": [
+          "OK",
+          "12\n12\nhello\n34"
+        ],
+        "checks": 23,
+        "one_minimal": true
+      },
+      "lindex_negative_offone": {
+        "kind": "sequence",
+        "commands": [
+          "RPUSH q d e",
+          "LINDEX q -1"
+        ],
+        "expected": [
+          "2",
+          "e"
+        ],
+        "actual": [
+          "2",
+          "(nil)"
+        ],
+        "checks": 15,
+        "one_minimal": true
+      },
+      "exists_deduplicates": {
+        "kind": "sequence",
+        "commands": [
+          "MSET a 12 b hello c 34",
+          "EXISTS a a z"
+        ],
+        "expected": [
+          "OK",
+          "2"
+        ],
+        "actual": [
+          "OK",
+          "1"
+        ],
+        "checks": 22,
+        "one_minimal": true
+      },
+      "mset_loses_last": {
+        "kind": "sequence",
+        "commands": [
+          "MSET a 12 b hello c 34",
+          "GET c"
+        ],
+        "expected": [
+          "OK",
+          "34"
+        ],
+        "actual": [
+          "OK",
+          "(nil)"
+        ],
+        "checks": 18,
+        "one_minimal": true
+      },
+      "append_returns_old_length": {
+        "kind": "sequence",
+        "commands": [
+          "APPEND n x"
+        ],
+        "expected": [
+          "1"
+        ],
+        "actual": [
+          "0"
+        ],
+        "checks": 13,
+        "one_minimal": true
+      }
+    }
+  },
+  "known_total_tokens": 4990,
+  "unknown_usage_attempts": 0,
+  "public_export_note": "Recorded model-generated suites; coursework baseline data and private workspace snapshots omitted. Only target hashes retained. Public credential adapter was refactored after the experiment."
+}
